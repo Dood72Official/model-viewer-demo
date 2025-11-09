@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Model Viewer Demo</title>
+    <title>Model Viewer Demo (No Scroll)</title>
 
     <!-- Load model-viewer -->
     <script
@@ -24,21 +24,29 @@
       }
 
       model-viewer {
-        height: 100vh;          /* always fill the height */
-        width: 200vh;           
+        height: 100vh;
+        width: 200vh;
         display: block;
-}
       }
     </style>
   </head>
 
   <body>
     <model-viewer
+      id="avatar"
       src="https://models.readyplayer.me/6910ce6448062250a482a8e9.glb"
       shadow-intensity="1"
       camera-controls
       touch-action="pan-y"
       interaction-prompt="none">
     </model-viewer>
+
+    <script>
+      // Disable scroll wheel zoom, but keep pinch zoom
+      const viewer = document.getElementById('avatar');
+      viewer.addEventListener('wheel', (event) => {
+        event.preventDefault(); // prevent scroll zoom
+      }, { passive: false });
+    </script>
   </body>
 </html>
