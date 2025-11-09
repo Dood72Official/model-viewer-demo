@@ -1,3 +1,45 @@
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatar</title>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+    </script>
+    <style>
+      /* remove default spacing so iframe/embed doesn’t get surprise gaps */
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+      }
 
-<model-viewer src="https://models.readyplayer.me/6910ce6448062250a482a8e9.glb" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
+      /* this is the important part: give it a predictable box */
+      model-viewer {
+        width: 100%;
+        max-width: 100%;
+        height: 600px;     /* pick a height that works in Framer */
+        display: block;
+      }
+
+      /* optional: on small screens give it slightly less */
+      @media (max-width: 600px) {
+        model-viewer {
+          height: 500px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <model-viewer
+      src="https://models.readyplayer.me/6910ce6448062250a482a8e9.glb"
+      shadow-intensity="1"
+      auto-rotate
+      rotation-per-second="20deg"
+      camera-controls
+      touch-action="pan-y">
+    </model-viewer>
+  </body>
+</html>
