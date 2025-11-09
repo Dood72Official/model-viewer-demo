@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Avatar (Full Fill)</title>
+    <title>3D Avatar (Top Anchored)</title>
 
     <!-- Load model-viewer -->
     <script
@@ -20,16 +20,16 @@
         background: transparent;
         overflow: hidden;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        justify-content: center; /* horizontally center */
+        align-items: flex-start; /* anchor to top */
       }
 
       model-viewer {
-        /* Use the larger of viewport width or height */
         width: max(100vw, 100vh);
         height: max(100vw, 100vh);
         display: block;
         background: transparent;
+        object-position: top center; /* keep top in view */
       }
     </style>
   </head>
@@ -41,7 +41,9 @@
       camera-controls
       touch-action="pan-y"
       interaction-prompt="none"
-      style="background-color: transparent;">
+      style="background-color: transparent;"
+      camera-orbit="0deg 100% 100%"
+      field-of-view="40deg">
     </model-viewer>
   </body>
 </html>
